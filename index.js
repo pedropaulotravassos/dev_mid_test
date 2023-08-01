@@ -8,6 +8,7 @@ const { calculateFactorial } = require('./functions/factorial')
 const { checkPalindrome } = require('./functions/palindrome')
 const { getNumberTable } = require('./functions/table')
 const { vowelCounter } = require('./functions/vowelCounter')
+const { gradesAvg } = require('./functions/gradesAvg')
 
 // Exercise 1: Simple Calculator
 app.post('/simple-calculator', function (req, res) {
@@ -35,6 +36,10 @@ app.get('/table', function (req, res) {
 // Exercise 6: Vowel Counter
 app.get('/vowel-counter', function (req, res) {
     res.send(vowelCounter(req.query.word))
+})
+// Exercise 7: Grade Average
+app.post('/grade-avg', function (req, res) {
+    res.send(`A média das notas é: ${gradesAvg(req.body.grades)}`)
 })
 
 app.listen(3000, () => console.log('started api!'))
