@@ -4,6 +4,7 @@ app.use(express.json())
 // add functions
 const primeNumbers = require('./functions/primeNumbers')
 const { simpleCalculator } = require('./functions/simpleCalculator')
+const { calculateFactorial } = require('./functions/factorial')
 
 // Exercise 1: Simple Calculator
 app.post('/simple-calculator', function (req, res) {
@@ -15,6 +16,10 @@ app.get('/prime-numbers', function (req, res) {
 })
 app.get('/is-prime-number', function (req, res) {
     res.send(`${req.query.number} ${primeNumbers.checkIfIsPrimeNumber(req.query.number) ? 'é primo' : 'não é primo'}`)
+})
+// Exercise 3: Factorial
+app.get('/factorial', function (req, res) {
+    res.send(`O fatorial de ${req.query.number} é ${calculateFactorial(parseInt(req.query.number))}`)
 })
 
 app.listen(3000, () => console.log('started api!'))
