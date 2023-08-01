@@ -6,6 +6,7 @@ const primeNumbers = require('./functions/primeNumbers')
 const { simpleCalculator } = require('./functions/simpleCalculator')
 const { calculateFactorial } = require('./functions/factorial')
 const { checkPalindrome } = require('./functions/palindrome')
+const { getNumberTable } = require('./functions/table')
 
 // Exercise 1: Simple Calculator
 app.post('/simple-calculator', function (req, res) {
@@ -25,5 +26,9 @@ app.get('/factorial', function (req, res) {
 // Exercise 4: Palindrome
 app.get('/palindrome', function (req, res) {
     res.send(`${req.query.word} ${checkPalindrome(req.query.word) ? 'é um palíndromo' : 'não é um palíndromo'}`)
+})
+// Exercise 5: Table
+app.get('/table', function (req, res) {
+    res.send(getNumberTable(parseInt(req.query.number)))
 })
 app.listen(3000, () => console.log('started api!'))
