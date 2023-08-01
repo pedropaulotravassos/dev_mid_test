@@ -7,6 +7,7 @@ const { simpleCalculator } = require('./functions/simpleCalculator')
 const { calculateFactorial } = require('./functions/factorial')
 const { checkPalindrome } = require('./functions/palindrome')
 const { getNumberTable } = require('./functions/table')
+const { vowelCounter } = require('./functions/vowelCounter')
 
 // Exercise 1: Simple Calculator
 app.post('/simple-calculator', function (req, res) {
@@ -31,4 +32,9 @@ app.get('/palindrome', function (req, res) {
 app.get('/table', function (req, res) {
     res.send(getNumberTable(parseInt(req.query.number)))
 })
+// Exercise 6: Vowel Counter
+app.get('/vowel-counter', function (req, res) {
+    res.send(vowelCounter(req.query.word))
+})
+
 app.listen(3000, () => console.log('started api!'))
